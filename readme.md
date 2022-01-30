@@ -2,6 +2,8 @@
 
 ## three.js
 
+https://yuki-sakaguchi.github.io/creative-coding-boilerplate/threejs-boilerplate/dist/
+
 - TypeScript + Vite
 - 画面いっぱい表示
 - リサイズ
@@ -10,6 +12,8 @@
 - OrbitControls
 
 ## pixi.js
+
+https://yuki-sakaguchi.github.io/creative-coding-boilerplate/pixijs-boilerplate/dist/
 
 - TypeScript + Vite
 - 画面いっぱい表示
@@ -29,6 +33,11 @@ npm init vite
 ```bash
 npm i three @types/three dat.gui @types/dat.gui
 ```
+or
+```bash
+npm i pixi.js dat.gui @types/dat.gui @type/offscreencanvas
+```
+（pixi.jsの6系は型定義も一緒にあるので別途読み込まなくてOK)
 
 `vite.config.ts` に以下を設定すればビルド時に相対パスになる
 
