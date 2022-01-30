@@ -22,6 +22,15 @@ https://yuki-sakaguchi.github.io/creative-coding-boilerplate/pixijs-boilerplate/
 - filter
 - どこでも動くように相対パスでのビルド
 
+## p5.js
+
+https://yuki-sakaguchi.github.io/creative-coding-boilerplate/p5-boilerplate/dist/
+
+- TypeScript + Vite
+- 画面いっぱい表示
+- リサイズ
+- どこでも動くように相対パスでのビルド
+
 ## Vite で環境構築
 
 ```bash
@@ -33,11 +42,14 @@ npm init vite
 ```bash
 npm i three @types/three dat.gui @types/dat.gui
 ```
+
 or
+
 ```bash
 npm i pixi.js dat.gui @types/dat.gui @type/offscreencanvas
 ```
-（pixi.jsの6系は型定義も一緒にあるので別途読み込まなくてOK)
+
+（pixi.js の 6 系は型定義も一緒にあるので別途読み込まなくて OK)
 
 `vite.config.ts` に以下を設定すればビルド時に相対パスになる
 
