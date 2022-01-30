@@ -11,6 +11,19 @@ https://yuki-sakaguchi.github.io/creative-coding-boilerplate/threejs-boilerplate
 - dat.gui
 - OrbitControls
 
+## glsl（three.js）
+
+https://yuki-sakaguchi.github.io/creative-coding-boilerplate/threejs-glsl-boilerplate/dist/
+
+- TypeScript + Vite
+- 画面いっぱい表示
+- リサイズ
+- どこでも動くように相対パスでのビルド
+- dat.gui
+- OrbitControls
+- fragmentShader, vertexShader の外部ファイル化
+- uniforms で js と glsl で値をやり取り
+
 ## pixi.js
 
 https://yuki-sakaguchi.github.io/creative-coding-boilerplate/pixijs-boilerplate/dist/
