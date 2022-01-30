@@ -1,7 +1,10 @@
-import * as THREE from 'three';
-import * as dat from 'dat.gui';
+import './style.css'
 
-let gui = new dat.GUI();
+import { Scene, WebGLRenderer, PerspectiveCamera, BoxGeometry, MeshBasicMaterial, Mesh } from 'three';
+import { GUI }from 'dat.gui';
+import { OrbitControls } from "three/examples/jsm/controls/OrbitControls";
+
+let gui = new GUI();
 let params = {
   color: 0x00ff00,
   scale: 1.0,
@@ -9,18 +12,21 @@ let params = {
 gui.addColor(params, 'color').onChange(() => cube.material.color.set(params.color));
 gui.add(params, 'scale', 1.0, 4.0).onChange(() => { cube.scale.set(params.scale, params.scale, params.scale) });
 
-let scene = new THREE.Scene();
+let scene = new Scene();
 
-let camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
+let camera = new PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
 camera.position.z = 5;
 
-let renderer = new THREE.WebGLRenderer();
+let renderer = new WebGLRenderer();
 renderer.setSize(window.innerWidth, window.innerHeight);
 document.body.appendChild(renderer.domElement);
 
-let geometry = new THREE.BoxGeometry(1, 1, 1);
-let material = new THREE.MeshBasicMaterial({ color: 0x00ff00 });
-let cube = new THREE.Mesh(geometry, material);
+const controls = new OrbitControls(camera, renderer.domElement);
+controls.update();
+
+let geometry = new BoxGeometry(1, 1, 1);
+let material = new MeshBasicMaterial({ color: 0x00ff00 });
+let cube = new Mesh(geometry, material);
 scene.add(cube);
 
 let animate = () => {

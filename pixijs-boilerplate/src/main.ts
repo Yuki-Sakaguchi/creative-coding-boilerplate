@@ -1,17 +1,31 @@
-import * as PIXI from 'pixi.js';
-import * as dat from 'dat.gui';
+import './style.css';
 
-let gui = new dat.GUI();
+import { Application, Container, Sprite, Texture, filters } from 'pixi.js';
+import { BlurFilter } from '@pixi/filter-blur';
+import { GUI } from 'dat.gui';
+
+let gui = new GUI();
 let params = {
   color: 0xff0000,
   blur: 0,
 };
-gui.addColor(params, 'color').onChange(() => sketch.block.tint = params.color);
+gui.addColor(params, 'color').onChange(() => { if (sketch.block) sketch.block.tint = params.color });
 gui.add(params, 'blur', 0, 10, 1).onChange(() => sketch.blurFilter.blur = params.blur);
 
 class Sketch {
+  app: Application;
+  width: number;
+  height: number;
+  time: number;
+  container: Container;
+  blurFilter: BlurFilter;
+  block?: Sprite;
+
   constructor() {
-    this.app = new PIXI.Application({
+    this.width = window.innerWidth;
+    this.height = window.innerHeight;
+
+    this.app = new Application({
         width: this.width,
         height: this.height,
         antialias: true,
@@ -23,21 +37,24 @@ class Sketch {
     document.body.appendChild(this.app.view);
     
     this.time = 0;
-    this.container = new PIXI.Container();
+    this.container = new Container();
 
-    this.blurFilter = new PIXI.filters.BlurFilter();
+    this.blurFilter = new filters.BlurFilter();
     this.blurFilter.blur = params.blur;
     this.container.filters = [this.blurFilter];
     
     this.app.stage.addChild(this.container);
-    this.add();
+
+    this.block;
+    this.createBlock();
+
     this.render();
 
     window.addEventListener('resize', this.resize.bind(this));
   }
 
-  add() {
-    let block = new PIXI.Sprite(PIXI.Texture.WHITE);
+  createBlock() {
+    const block = new Sprite(Texture.WHITE);
     block.tint = params.color;
     block.width = 200;
     block.height = 200;
@@ -49,9 +66,9 @@ class Sketch {
   }
 
   render() {
-    this.app.ticker.add((delta) => {
+    this.app.ticker.add(() => {
       this.time += 0.01;
-      this.block.rotation = this.time;
+      if (this.block) this.block.rotation = this.time;
     });
   }
 
@@ -61,7 +78,7 @@ class Sketch {
     this.app.renderer.resize(window.innerWidth, window.innerHeight);
 
     this.container.removeChildren(0, this.container.children.length);
-    this.add();
+    this.createBlock();
   }
 }
 
