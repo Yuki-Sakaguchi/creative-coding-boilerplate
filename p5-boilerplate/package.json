@@ -1,0 +1,17 @@
+{
+  "name": "p5-boilerplate",
+  "version": "0.0.0",
+  "scripts": {
+    "dev": "vite",
+    "build": "tsc && vite build",
+    "preview": "vite preview"
+  },
+  "devDependencies": {
+    "typescript": "^4.4.4",
+    "vite": "^2.7.2"
+  },
+  "dependencies": {
+    "@types/p5": "^1.4.0",
+    "p5": "^1.4.0"
+  }
+}
