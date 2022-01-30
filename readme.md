@@ -23,6 +23,8 @@ https://yuki-sakaguchi.github.io/creative-coding-boilerplate/threejs-glsl-boiler
 - OrbitControls
 - fragmentShader, vertexShader の外部ファイル化
 - uniforms で js と glsl で値をやり取り
+- Next.js, Nuxt.jsで使うのはこっちで解説
+  - https://github.com/Yuki-Sakaguchi/threejs-glitch
 
 ## pixi.js
 
